@@ -59,10 +59,7 @@ The superpowers and frontend-design skills are vendored in `.claude/skills/` (se
 ## Release flow
 
 1. Work on `feature/*` (or `fix/*`, `docs/*`, `infra/*`) and open a PR into `devel`. Squash-merge it; the PR title must be a valid conventional commit.
-2. When ready to release, cut `release/YYYY-MM-DD` from `devel`, open a release PR into `main` and squash-merge it (not a merge commit: `devel` requires verified signatures, and GitHub signs squash commits).
-3. `release.yml` runs semantic-release on `main`: tags `vX.Y.Z`, updates `CHANGELOG.md`, creates the GitHub release.
-4. Squash-merge `main` back into `devel` (PR `main` -> `devel`, allowed by the branch-name check) to pick up the changelog commit. Do not use a merge commit: the changelog commit is made by the Actions bot and is unsigned, so a merge commit would carry it into `devel` and trip the verified-signature rule. The release commit has no `[skip ci]`; pushes made with `GITHUB_TOKEN` do not trigger workflows anyway.
+2. When ready to release, open a release PR from `devel` into `main` and merge it with a merge commit (not squash), so semantic-release sees every commit.
+3. `release.yaml` runs semantic-release on `main` with the built-in `GITHUB_TOKEN`: tags `vX.Y.Z`, updates `CHANGELOG.md`, creates the GitHub release, then merges `main` back into `devel`.
 
 The first release will be v1.0.0 unless a `v0.1.0` tag is pushed first. CI enforces conventional PR titles with `cz check` on the PR title (re-run on title edits).
-
-If `main` is protected, the GitHub Actions bot must be allowed to bypass the protection (or use a PAT instead of `GITHUB_TOKEN`) so semantic-release can push the changelog commit.
