@@ -1,0 +1,25 @@
+# Render Blueprint for the API: New > Blueprint in the Render dashboard, pick this repo.
+# Free plan: no card, sleeps after 15 idle minutes (first request then takes about a minute).
+services:
+  - type: web
+    name: signposted-api
+    runtime: python
+    plan: free
+    branch: main
+    rootDir: apps/api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      # Neon connection string, copied as given (postgresql://...?sslmode=require).
+      - key: DATABASE_URL
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      # CORS_ORIGINS is left out: the web app reaches the API through the /api rewrite. Add it in the
+      # dashboard only if the web app calls Render directly (see docs/DEPLOYMENT.md).

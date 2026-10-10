@@ -163,3 +163,15 @@ def test_list_trips_respects_limit_and_offset(client):
     assert client.get("/trips?limit=0").status_code == 422
     assert client.get("/trips?limit=101").status_code == 422
     assert client.get("/trips?offset=-1").status_code == 422
+
+
+def test_postgres_urls_use_the_psycopg_driver():
+    from app.db import normalize_database_url
+
+    assert normalize_database_url("postgres://u:p@h/db") == "postgresql+psycopg://u:p@h/db"
+    assert (
+        normalize_database_url("postgresql://u:p@h/db?sslmode=require")
+        == "postgresql+psycopg://u:p@h/db?sslmode=require"
+    )
+    assert normalize_database_url("postgresql+psycopg://u:p@h/db").endswith("+psycopg://u:p@h/db")
+    assert normalize_database_url("sqlite:///x.db") == "sqlite:///x.db"
