@@ -21,6 +21,5 @@ services:
         sync: false
       - key: GROQ_MODEL
         value: llama-3.3-70b-versatile
-      # Only needed if the web app calls the API directly instead of through the /api rewrite.
-      - key: CORS_ORIGINS
-        value: ""
+      # CORS_ORIGINS is left out: the web app reaches the API through the /api rewrite. Add it in the
+      # dashboard only if the web app calls Render directly (see docs/DEPLOYMENT.md).
