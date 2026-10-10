@@ -1,4 +1,4 @@
-# TripMate API
+# Signposted API
 
 FastAPI + LangGraph service that plans trips with Groq-backed agents (research, itinerary, budget, reviewer) and stores them in PostgreSQL. The reviewer can send the itinerary back to the planner for up to two review rounds.
 

@@ -32,7 +32,7 @@ def create_app(settings: Settings | None = None, llm: BaseChatModel | None = Non
         yield
         engine.dispose()
 
-    app = FastAPI(title="TripMate AI", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="Signposted", version="0.1.0", lifespan=lifespan)
     if settings.cors_origins:
         app.add_middleware(
             CORSMiddleware,
