@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/Axeloooo/Signposted/compare/v1.0.0...v1.0.1) (2026-10-10)
+
+### Infrastructure
+
+* add free-tier deploy config for Render, Neon and Vercel ([#18](https://github.com/Axeloooo/Signposted/issues/18)) ([02bad72](https://github.com/Axeloooo/Signposted/commit/02bad728cbe73b3acd46a19d3a064c4f0cce5e47))
+
 ## 1.0.0 (2026-10-10)
 
 ### Features
