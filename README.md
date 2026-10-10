@@ -12,7 +12,8 @@ Multi-agent travel planner. A LangGraph pipeline of Groq-backed agents (research
 | `scripts/`  | Git hook helper scripts                                                                           |
 | `.github/`  | CI workflows (PR checks, release)                                                                 |
 
-To run the API locally, see [apps/api/README.md](apps/api/README.md).
+To run the API locally, see [apps/api/README.md](apps/api/README.md). To host it for free (Vercel, Render and
+Neon), follow [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Contributing
 

@@ -21,7 +21,16 @@ class Trip(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+def normalize_database_url(url: str) -> str:
+    """Postgres URLs as hosts hand them out (Neon, Render) name no driver; use psycopg 3."""
+    for prefix in ("postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            return "postgresql+psycopg://" + url[len(prefix) :]
+    return url
+
+
 def make_engine(url: str) -> Engine:
+    url = normalize_database_url(url)
     connect_args = {"check_same_thread": False} if url.startswith("sqlite") else {}
     return create_engine(url, pool_pre_ping=True, connect_args=connect_args)
 
