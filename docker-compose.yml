@@ -5,13 +5,13 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_USER: tripmate
-      POSTGRES_PASSWORD: tripmate
-      POSTGRES_DB: tripmate
+      POSTGRES_USER: signposted
+      POSTGRES_PASSWORD: signposted
+      POSTGRES_DB: signposted
     volumes:
-      - tripmate-pgdata:/var/lib/postgresql/data
+      - signposted-pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tripmate"]
+      test: ["CMD-SHELL", "pg_isready -U signposted"]
       interval: 5s
       retries: 10
 
@@ -20,7 +20,7 @@ services:
     environment:
       GROQ_API_KEY: ${GROQ_API_KEY:-}
       GROQ_MODEL: ${GROQ_MODEL:-llama-3.3-70b-versatile}
-      DATABASE_URL: postgresql+psycopg://tripmate:tripmate@db:5432/tripmate
+      DATABASE_URL: postgresql+psycopg://signposted:signposted@db:5432/signposted
     depends_on:
       db:
         condition: service_healthy
@@ -35,4 +35,4 @@ services:
       - api
 
 volumes:
-  tripmate-pgdata:
+  signposted-pgdata:

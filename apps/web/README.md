@@ -1,6 +1,6 @@
 # Signposted Web
 
-Vite + React + TypeScript UI for TripMate, in the Signposted departures-board design: a black board, amber split-flap times, green for on time, red for a hold. It talks to `apps/api` over HTTP.
+Vite + React + TypeScript UI for Signposted, in a departures-board design: a black board, amber split-flap times, green for on time, red for a hold. It talks to `apps/api` over HTTP.
 
 ## Run
 

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from dotenv import load_dotenv
 
-DEFAULT_DATABASE_URL = "postgresql+psycopg://tripmate:tripmate@localhost:5432/tripmate"
+DEFAULT_DATABASE_URL = "postgresql+psycopg://signposted:signposted@localhost:5432/signposted"
 DEFAULT_GROQ_MODEL = "llama-3.3-70b-versatile"
 
 

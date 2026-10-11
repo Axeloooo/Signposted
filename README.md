@@ -1,4 +1,4 @@
-# TripMate AI
+# Signposted
 
 Multi-agent travel planner. A LangGraph pipeline of Groq-backed agents (research, itinerary, budget, reviewer) builds a trip plan, FastAPI serves it, and PostgreSQL stores it.
 

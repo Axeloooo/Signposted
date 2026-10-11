@@ -1,4 +1,4 @@
-# TripMate AI
+# Signposted
 
 Multi-agent trip planner: FastAPI + LangGraph (Groq) + PostgreSQL. Python 3.13.
 
